@@ -857,7 +857,6 @@ function find(arr,num,string){
     for(let i =0;i <arr.length;i++){
         if(arr[i] === string){
             count++;
-            
         }
         
         if(count === number){
@@ -906,3 +905,108 @@ function prime(num){
 }
 
 console.log(prime(13))
+
+//substring and find largest num
+// Given a string s, find the length of the longest 
+// substring
+//  without repeating characters.
+
+let str = 'bbabcb'
+
+function substring(str){
+    let length = str.length
+    let maxLength = 0
+    let start = 0
+    let seen = new Set()
+    
+    for(let i = 0;i < length;i++){
+        while(seen.has(str[i])){
+            seen.delete(str[start])
+            start++
+        }
+        seen.add(str[i])
+    maxLength = Math.max(maxLength,i - start + 1)
+    }
+    return maxLength
+}
+
+console.log(substring(str))
+console.log(lengthOfLongestSubstring(str));  // Output: 1
+
+
+//map without
+let arr = [1, 2, 3];
+
+for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] * 2;
+}
+
+console.log(arr);  // Output: [2, 4, 6]
+
+
+//Timer react js
+import React, { useState, useEffect, useRef } from 'react';
+
+const Timer = () => {
+  const [time, setTime] = useState({ hr: 0, min: 0, sec: 0 });
+  const [isRunning, setIsRunning] = useState(false);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    if (isRunning) {
+      timerRef.current = setInterval(() => {
+        setTime((prevTime) => {
+          let { hr, min, sec } = prevTime;
+          sec += 1;
+          if (sec === 60) {
+            sec = 0;
+            min += 1;
+          }
+          if (min === 60) {
+            min = 0;
+            hr += 1;
+          }
+          return { hr, min, sec };
+        });
+      }, 1000);
+    } else if (!isRunning && timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [isRunning]);
+
+  const handleStartResume = () => {
+    setIsRunning(true);
+  };
+
+  const handlePause = () => {
+    setIsRunning(false);
+  };
+
+  const handleReset = () => {
+    setIsRunning(false);
+    setTime({ hr: 0, min: 0, sec: 0 });
+  };
+
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <h1>Timer</h1>
+      <div style={{ fontSize: '2em' }}>
+        {String(time.hr).padStart(2, '0')}:
+        {String(time.min).padStart(2, '0')}:
+        {String(time.sec).padStart(2, '0')}
+      </div>
+      <div>
+        <button onClick={handleStartResume}>Start/Resume</button>
+        <button onClick={handlePause}>Pause</button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
+    </div>
+  );
+};
+
+export default Timer;
+
+
+//node
+// https://www.turing.com/interview-questions/node-js
