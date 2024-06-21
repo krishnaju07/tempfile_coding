@@ -1010,3 +1010,200 @@ export default Timer;
 
 //node
 // https://www.turing.com/interview-questions/node-js
+
+//
+// // The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// // Examples
+// // "din"      =>  "((("
+// // "recede"   =>  "()()()"
+// // "Success"  =>  ")())())"
+// // "(( @"     =>  "))(("
+
+function find(str){
+    let convert = str.split("")
+
+    let result = convert.map((item) => {
+        return convert.filter((value) => value.toLowerCase() === item.toLowerCase()).length > 1 ? ')' : '('
+    })
+
+  return result.join('')
+
+}
+
+console.log(find('Success'))
+
+
+ let str = 'Hey fellow warriors'
+// // letter >= 5
+
+function reverse(str){
+   let result = str.split(" ")
+
+//    console.log(result)
+
+   for(let i=result.length-1;i >=0;i--){
+       if(result[i].length >= 5){
+        result[i] = result[i].split("").reverse().join('')
+       }
+   }
+   return result.join(' ')
+}
+
+console.log(reverse(str))
+
+
+//
+function capitalizeFirstWords(text) {
+  let sentences = text.split(' ');
+
+  let capitalizedSentences = sentences.map(sentence => {
+      if (sentence.length > 0) {
+          return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+      } else {
+          return sentence;
+      }
+  });
+
+  let capitalizedText = capitalizedSentences.join(' ');
+
+  return capitalizedText;
+}
+
+let originalText = "this is my world";
+let capitalizedText = capitalizeFirstWords(originalText);
+console.log(capitalizedText);
+
+
+//Input: numbers = [2,7,11,15], target = 9
+// Output: [1,2]
+// Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2.
+
+//simple
+let num = [2,7,11,18]
+let target = 9
+
+function findind(num,target){
+     let res = []
+     for(let i =0;i < num.length;i++){
+         for(let j =i+1;j < num.length ;j++){
+             if(num[i] + num[j] === target){
+                 res.push(i+1,j+1)
+             }
+         }
+     }
+     return res
+}
+
+console.log(findind(num,target))
+
+//
+
+function twoSum(numbers, target) {
+  let numDict = {};
+  for (let i = 0; i < numbers.length; i++) {
+      let complement = target - numbers[i];
+      if (complement in numDict) {
+          return [numDict[complement] + 1, i + 1];  // 1-based index
+      }
+      numDict[numbers[i]] = i;
+  }
+  return [];
+}
+
+
+//naan pannadhu
+
+
+//
+
+let num = [1,2,3,4,5,6,7]
+let target = 3
+// Output: [5,6,7,1,2,3,4]
+let length = num.length
+let current = length - target
+
+let postVal = num.splice(current,length)
+let currentval = num.splice(0,current)
+
+let merge = [...postVal,...currentval]
+
+console.log(merge)
+
+
+
+
+
+//////interviw time
+// Input: 
+let num = [1,2,3,4,5,6,7]
+let target = 4
+    let length = num.length
+    let current = length - target
+    
+    let postVal = num.splice(current,length)
+    let currentval = num.splice(0,current)
+    
+    let merge = [...postVal,...currentval]
+    
+    console.log(merge)
+    
+// Output: [5,6,7,1,2,3,4]
+
+
+///thappu
+function rotate(num,target){
+    let length = num.length
+    let current = length - target
+    let res = []
+    
+    for(let i =0 ;i < length;i++){
+
+        if(i < current){
+            // console.log(i < current)
+          res.push(num[i])
+        }else {
+            
+        }
+    }
+    return res
+}
+
+// console.log(rotate(num,target))
+
+
+//Example 1:
+
+// Input: nums1 = [1,3], nums2 = [2]
+// Output: 2.00000
+// Explanation: merged array = [1,2,3] and median is 2.
+// Example 2:
+
+// Input: nums1 = [1,2], nums2 = [3,4]
+// Output: 2.50000
+// Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+ 
+function findMedianSortedArrays(nums1, nums2) {
+  const merged = [...nums1, ...nums2].sort((a, b) => a - b);
+  const n = merged.length;
+  if (n % 2 === 1) {
+      return merged[Math.floor(n / 2)];
+  } else {
+      return (merged[n / 2 - 1] + merged[n / 2]) / 2;
+  }
+}
+
+// Examples:
+console.log(findMedianSortedArrays([1, 3], [2])); // Output: 2
+console.log(findMedianSortedArrays([1, 2], [3, 4])); // Output: 2.5
+
+
+//status code
+// 200 - ok
+// 201 - created
+//202 - accepted
+//400 - bad request
+//401 - unauthrozied
+//404 - not found
+//500 - internal server error
+//502 - bad gateway
