@@ -21,6 +21,41 @@ for(let i=0;i <=50;i++){
     }
 }
 
+//
+function reverseArray(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+  
+  while (left < right) {
+      // Swap the elements
+      let temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      
+      // Move the pointers
+      left++;
+      right--;
+  }
+  
+  return arr;
+}
+
+console.log(reverseArray([1, 2, 3, 4,5,6])); // [4, 3, 2, 1]
+
+
+
+// reverse data 
+const arr = [1,2,3,4,5,6,7,8,9]
+
+for(let i=0;i <arr.length/2;i++){
+    let temp = arr[i]
+    // console.log(arr[arr.length -1 - i])
+    arr[i] = arr[arr.length -1 - i]
+    arr[arr.length-1-i] = temp
+}
+
+console.log("Try programiz.pro",arr);
+
 
 //
 // 2 ====> reverse a String in without using reverse function method
@@ -1207,3 +1242,188 @@ console.log(findMedianSortedArrays([1, 2], [3, 4])); // Output: 2.5
 //404 - not found
 //500 - internal server error
 //502 - bad gateway
+
+
+//
+[13:36] Anup Mondal
+function job() {
+
+    return new Promise(function(resolve, reject) {
+
+        reject();
+
+    });
+
+	}
+ 
+	let promise = job();
+ 
+	promise
+ 
+	.then(function() {
+
+		console.log('Success 1');
+
+	})
+ 
+	.then(function() {
+
+		console.log('Success 2');
+
+	})
+ 
+	.then(function() {
+
+		console.log('Success 3');
+
+	})
+ 
+	.catch(function() {
+
+		console.log('Error 1');
+
+	})
+ 
+	.then(function() {
+
+		console.log('Success 4');
+
+	});
+
+
+
+
+//
+
+Sort the object based on keys
+		{
+			white: 1,
+			black: 2,
+			yellow: 3,
+			blue: 4
+		}
+
+
+//
+
+[1,2,[3,4,5],[6,[7,[8,9]]],10] -> [1,2,3,4,5,6,7,8,9,10]
+
+
+//
+(function() {
+		console.log(1); 
+		setTimeout(function(){console.log(2)}, 1000); 
+		setTimeout(function(){console.log(3)}, 0); 
+		console.log(4);
+	})();
+
+
+//
+
+var myObject = {
+		foo: "bar",
+		func: function() {
+			var self = this;
+			console.log("outer func:  this.foo = " + this.foo);
+			console.log("outer func:  self.foo = " + self.foo);
+			(function() {
+				console.log("inner func:  this.foo = " + this.foo);
+				console.log("inner func:  self.foo = " + self.foo);
+			}());
+		}
+	};
+	myObject.func();
+
+
+//
+
+var x = 1
+	function outer() {
+		console.log(x);
+		function inner() {
+			console.log(x);
+		}
+		inner();
+		var x = 2;
+	}
+	outer();
+
+//
+
+let x = [1, 2, 3]; 
+	let y = x.map((num) => { 
+	  x.push(num + 3); 
+	  return num + 1; 
+	}); 
+	console.log(y);
+
+
+
+//
+
+let x = [2]; 
+	let y = 2; 
+	console.log(x == y);
+
+  //
+  let arr1 = [1,2,4,5]
+let arr2 = [4,5]
+
+const result = arr1.filter((item) => arr2.includes(item)) 
+
+console.log(result)
+
+//
+function moveZerosToEnd(arr) {
+  // Create a new array to store the non-zero elements
+  let result = [];
+  
+  // Count the number of zeros
+  let zeroCount = 0;
+  
+  // Iterate through the array
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      // Increment zero count
+      zeroCount++;
+    } else {
+      // Add non-zero elements to the result array
+      result.push(arr[i]);
+    }
+  }
+  
+  // Add the zeros to the end of the result array
+  while (zeroCount > 0) {
+    result.push(0);
+    zeroCount--;
+  }
+  
+  return result;
+}
+
+// Example usage
+let arr = [0, 1, 0, 3, 12];
+let newArr = moveZerosToEnd(arr);
+console.log(newArr); // Output: [1, 3, 12, 0, 0]
+
+
+//2nd way
+function moveZerosToEnd(arr) {
+  // Filter out non-zero elements
+  let nonZeroElements = arr.filter(num => num !== 0);
+  
+  // Count the number of zeros
+  let zeroCount = arr.length - nonZeroElements.length;
+  
+  // Create an array of zeros
+  let zeros = Array(zeroCount).fill(0);
+  
+  // Concatenate the non-zero elements with the zeros
+  return nonZeroElements.concat(zeros);
+}
+
+// Example usage
+let arr = [0, 1, 0, 3, 12];
+let newArr = moveZerosToEnd(arr);
+console.log(newArr); // Output: [1, 3, 12, 0, 0]
+
