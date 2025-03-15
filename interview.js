@@ -1430,3 +1430,61 @@ let arr = [0, 1, 0, 3, 12];
 let newArr = moveZerosToEnd(arr);
 console.log(newArr); // Output: [1, 3, 12, 0, 0]
 
+
+
+
+//2025 Interviews
+Input: seats = [1,0,0,0,1,0,1]
+Output: 2
+Explanation: 
+If Alex sits in the second open seat (i.e. seats[2]), then the closest person has distance 2.
+If Alex sits in any other open seat, the closest person has distance 1.
+Thus, the maximum distance to the closest person is 2.
+Example 2:
+
+
+//2nd Qus
+Input: seats = [1,0,0,0]
+Output: 3
+Explanation: 
+If Alex sits in the last seat (i.e. seats[3]), the closest person is 3 seats away.
+This is the maximum distance possible, so the answer is 3.
+Example 3:
+
+Input: seats = [0,1]
+Output: 1
+
+
+
+//Ans
+var maxDistToClosest = function(seats) {
+    let maxDist = 0;
+    let lastOccupied = -1;
+    
+    for (let i = 0; i < seats.length; i++) {
+        if (seats[i] === 1) {
+            if (lastOccupied === -1) {
+                maxDist = i; // Case: Leading empty seats
+            } else {
+                maxDist = Math.max(maxDist, Math.floor((i - lastOccupied) / 2));
+            }
+            lastOccupied = i;
+        }
+    }
+    
+    // Case: Trailing empty seats
+    maxDist = Math.max(maxDist, seats.length - 1 - lastOccupied);
+    
+    return maxDist;
+};
+
+// Example 1
+console.log(maxDistToClosest([1,0,0,0,1,0,1])); // Output: 2
+
+// Example 2
+console.log(maxDistToClosest([1,0,0,0])); // Output: 3
+
+// Example 3
+console.log(maxDistToClosest([0,1])); // Output: 1
+
+
